@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>crear nuevo usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="user_form" (ngSubmit)="createUser()">
+    <ion-item>
+      <ion-input type="text" formControlName="name" placeholder="Introduzca el nombre del usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" formControlName="ci" placeholder="Introduzca el CI del usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" formControlName="address" placeholder="Introduzca la direccion del usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" formControlName="age" placeholder="Introduzca la edad del usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" formControlName="phone" placeholder="Introduzca el telefono del usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" formControlName="password" placeholder="Introduzca la contraseña provisional para el usuario"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!user_form.valid">Registrar nuevo usuario</ion-button>
+  </form>
+
+  {{ message }}
+
+</ion-content>
