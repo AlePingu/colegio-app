@@ -15,31 +15,36 @@ export class AppComponent implements OnInit {
     {
       title: 'Login',
       url: '/login',
-      icon: 'mail'
+      icon: 'warning'
     },
     {
       title: 'Crear nuevo usuario',
       url: '/create-user',
-      icon: 'paper-plane'
+      icon: 'warning'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Eliminar usuario',
+      url: '/delete-user',
+      icon: 'warning'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Cambiar password',
+      url: '/pass',
+      icon: 'warning'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Crear curso',
+      url: '/grade',
+      icon: 'warning'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
+      title: 'Crear materia',
+      url: '/signature',
+      icon: 'warning'
+    },
+    {
+      title: 'Registrar estudiante en un curso',
+      url: '/register',
       icon: 'warning'
     }
   ];

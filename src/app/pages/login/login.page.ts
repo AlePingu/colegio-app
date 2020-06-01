@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
     this.authService.login(this.login_form.value.ci, this.login_form.value.password).subscribe(data => {
       console.log(data);
       this.global.setToken(data['auth_token']);
+      this.global.setRole(data['role']);
       console.log(this.global.getToken());
     }, error => {
       console.log(error);

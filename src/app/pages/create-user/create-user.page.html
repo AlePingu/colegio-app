@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>crear nuevo usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registrar nuevo usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,6 +27,11 @@
     </ion-item>
     <ion-item>
       <ion-input type="password" formControlName="password" placeholder="Introduzca la contraseña provisional para el usuario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select formControlName="type" placeholder="Seleccione la funcion que cumplira el usuario">
+        <ion-select-option *ngFor="let item of userTypes" value="{{ item.code }}">{{ item.name }}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-button type="submit" [disabled]="!user_form.valid">Registrar nuevo usuario</ion-button>
   </form>

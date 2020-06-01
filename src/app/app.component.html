@@ -5,6 +5,7 @@
         <ion-list id="inbox-list">
           <ion-list-header>UE Toribio Claure</ion-list-header>
           <ion-note>lema del colegio</ion-note>
+          <ion-img src="assets/images/logo.png" style="transform:rotate(90deg); height:150px; width:150px align:center"></ion-img>
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
