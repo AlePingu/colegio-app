@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registrar nueva materia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="subject_form" (ngSubmit)="createSubject()">
+    <ion-item>
+      <ion-input type="text" formControlName="name" placeholder="Introduzca el nombre de la materia"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!subject_form.valid">Registrar nueva materia</ion-button>
+  </form>
+
+  {{ message }}
+
+</ion-content>

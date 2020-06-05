@@ -9,12 +9,12 @@ import { UsersService } from '../../services/users.service';
 })
 export class DeleteUserPage implements OnInit {
 
-  private user_form : FormGroup;
+  private userForm : FormGroup;
   private message : string;
   private users;
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService) {
-    this.user_form = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       user: [''],
     });
   }
@@ -32,7 +32,7 @@ export class DeleteUserPage implements OnInit {
   }
 
   delete() {
-    this.usersService.deleteUser(this.user_form.value.user).subscribe(data => {
+    this.usersService.deleteUser(this.userForm.value.user).subscribe(data => {
       this.loadUsers();
       this.message = 'El usuario ha sido dado de baja';
     }, error => {

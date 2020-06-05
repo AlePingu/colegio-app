@@ -9,14 +9,16 @@
 
 <ion-content>
 
-  <form [formGroup]="login_form" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <ion-item>
       <ion-input type="number" formControlName="ci" placeholder="Introduzca su CI"></ion-input>
     </ion-item>
     <ion-item>
       <ion-input type="password" formControlName="password" placeholder="Introduzca su contraseña"></ion-input>
     </ion-item>
-    <ion-button type="submit" [disabled]="!login_form.valid">Iniciar Sesion</ion-button>
+    <ion-button type="submit" [disabled]="!loginForm.valid">Iniciar Sesion</ion-button>
   </form>
+
+  {{ message }}
 
 </ion-content>

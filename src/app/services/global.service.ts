@@ -19,11 +19,16 @@ export class GlobalService {
   setToken(newToken) {
     localStorage.setItem('currentToken', newToken);
   }
-
-  getRole() {
-    return localStorage.getItem('role');
+  removeToken()
+  {
+    localStorage.removeItem('currentToken');
+    localStorage.removeItem('roles');
   }
-  setRole(role) {
-    localStorage.setItem('role', role);
+
+  getRoles() {
+    return JSON.parse(localStorage.getItem('roles'));
+  }
+  setRoles(roles) {
+    localStorage.setItem('roles', JSON.stringify(roles));
   }
 }

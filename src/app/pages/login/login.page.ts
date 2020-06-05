@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { AuthenticationService } from '../../services/authentication.service';
 import { GlobalService } from '../../services/global.service';
 
@@ -10,10 +12,11 @@ import { GlobalService } from '../../services/global.service';
 })
 export class LoginPage implements OnInit {
 
-  private login_form : FormGroup;
+  private loginForm : FormGroup;
+  private message;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private global: GlobalService) {
-    this.login_form = this.formBuilder.group({
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthenticationService, private global: GlobalService) {
+    this.loginForm = this.formBuilder.group({
       ci: ['', Validators.required],
       password: [''],
     });
@@ -24,14 +27,20 @@ export class LoginPage implements OnInit {
 
   login() {
     //do something
-    this.authService.login(this.login_form.value.ci, this.login_form.value.password).subscribe(data => {
+    this.authService.login(this.loginForm.value.ci, this.loginForm.value.password).subscribe(data => {
       console.log(data);
       this.global.setToken(data['auth_token']);
-      this.global.setRole(data['role']);
+      this.global.setRoles(data['roles']);
       console.log(this.global.getToken());
+      if(data['new_acount'] == true) {
+        this.router.navigate(['/change-password']).then(() => { window.location.reload() });
+      }else {
+        this.router.navigate(['/']).then(() => { window.location.reload() });
+      }
     }, error => {
       console.log(error);
-      this.global.setToken('');
+      this.message = 'Los datos son incorrectos';
+      this.global.removeToken();
     });
   }
 

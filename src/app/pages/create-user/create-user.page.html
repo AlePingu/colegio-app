@@ -9,7 +9,7 @@
 
 <ion-content>
 
-  <form [formGroup]="user_form" (ngSubmit)="createUser()">
+  <form [formGroup]="userForm" (ngSubmit)="createUser()">
     <ion-item>
       <ion-input type="text" formControlName="name" placeholder="Introduzca el nombre del usuario"></ion-input>
     </ion-item>
@@ -33,7 +33,7 @@
         <ion-select-option *ngFor="let item of userTypes" value="{{ item.code }}">{{ item.name }}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button type="submit" [disabled]="!user_form.valid">Registrar nuevo usuario</ion-button>
+    <ion-button type="submit" [disabled]="!userForm.valid">Registrar nuevo usuario</ion-button>
   </form>
 
   {{ message }}

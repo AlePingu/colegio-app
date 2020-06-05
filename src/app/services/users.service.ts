@@ -11,15 +11,7 @@ export class UsersService {
   constructor(private http: HttpClient, private global: GlobalService) { }
 
   createUser(name, ci, address, age, phone, password, role_code) {
-    if(role_code == 1001) {
-      return this.http.post(this.global.getHost() + '/users/director', { name, ci, address, age, phone, password }, { headers: { 'Authorization': this.global.getToken() } });
-    }else if(role_code == 1002){
-      return this.http.post(this.global.getHost() + '/users/teacher', { name, ci, address, age, phone, password }, { headers: { 'Authorization': this.global.getToken() } });
-    }else if(role_code == 1003){
-      return this.http.post(this.global.getHost() + '/users/student', { name, ci, address, age, phone, password }, { headers: { 'Authorization': this.global.getToken() } });
-    }else if(role_code == 1004){
-      return this.http.post(this.global.getHost() + '/users/parent', { name, ci, address, age, phone, password }, { headers: { 'Authorization': this.global.getToken() } });
-    }
+    return this.http.post(this.global.getHost() + '/users', { name, ci, address, age, phone, password, role_code }, { headers: { 'Authorization': this.global.getToken() } });
   }
 
   getUsers() {
@@ -28,6 +20,10 @@ export class UsersService {
 
   deleteUser(id) {
     return this.http.delete(this.global.getHost() + '/users/' + id, { headers: { 'Authorization': this.global.getToken() } });
+  }
+
+  changePassword(password, new_password) {
+    return this.http.put(this.global.getHost() + '/users/update_password', { password, new_password },{ headers: { 'Authorization': this.global.getToken() } });
   }
 
 }

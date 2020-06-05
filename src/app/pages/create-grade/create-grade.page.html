@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registrar nuevo curso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="grade_form" (ngSubmit)="createGrade()">
+    <ion-item>
+      <ion-input type="text" formControlName="name" placeholder="Introduzca el nombre del curso"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" formControlName="year" placeholder="Introduzca el año escolar"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!grade_form.valid">Registrar nuevo curso</ion-button>
+  </form>
+
+  {{ message }}
+
+</ion-content>

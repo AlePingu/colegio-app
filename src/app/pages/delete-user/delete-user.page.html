@@ -9,14 +9,14 @@
 
 <ion-content>
 
-  <form [formGroup]="user_form" (ngSubmit)="delete()">
+  <form [formGroup]="userForm" (ngSubmit)="delete()">
     <ion-item>
       <ion-label>CI del usuario</ion-label>
       <ion-select formControlName="user" placeholder="Seleccione el CI del usuario que desea eliminar">
         <ion-select-option *ngFor="let user of users" value="{{ user.id }}">{{ user.ci }}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button type="submit" [disabled]="!user_form.valid">Dar de baja</ion-button>
+    <ion-button type="submit" [disabled]="!userForm.valid">Dar de baja</ion-button>
   </form>
 
   {{ message }}

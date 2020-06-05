@@ -10,12 +10,12 @@ import { GlobalService } from '../../services/global.service';
 })
 export class CreateUserPage implements OnInit {
 
-  private user_form : FormGroup;
+  private userForm : FormGroup;
   private message : string;
   private userTypes;
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService, private globalService: GlobalService) {
-    this.user_form = this.formBuilder.group({
+    this.userForm = this.formBuilder.group({
       name: [''],
       ci: ['', Validators.required],
       address: [''],
@@ -27,16 +27,16 @@ export class CreateUserPage implements OnInit {
   }
 
   ngOnInit() {
-    var role = Number(this.globalService.getRole())
-    if(role) {
-      if(role == 1001) {
+    var roles = this.globalService.getRoles();
+    if(roles) {
+      if(roles.includes(1001)) {
         this.userTypes = [
           {name: 'Director', code: 1001},
           {name: 'Profesor', code: 1002},
           {name: 'Estudiante', code: 1003},
           {name: 'Padre', code: 1004}
         ];
-      }else if(role == 1002) {
+      }else if(roles.includes(1002)) {
         this.userTypes = [
           {name: 'Estudiante', code: 1003},
           {name: 'Padre', code: 1004}
@@ -47,7 +47,7 @@ export class CreateUserPage implements OnInit {
 
   createUser() {
     //do something
-    this.usersService.createUser(this.user_form.value.name, this.user_form.value.ci, this.user_form.value.address, this.user_form.value.age, this.user_form.value.phone, this.user_form.value.password, this.user_form.value.type).subscribe(data => {
+    this.usersService.createUser(this.userForm.value.name, this.userForm.value.ci, this.userForm.value.address, this.userForm.value.age, this.userForm.value.phone, this.userForm.value.password, this.userForm.value.type).subscribe(data => {
       console.log(data);
       this.message = 'Usuario creado exitosamente';
     }, error => {
