@@ -10,12 +10,15 @@ export class UsersService {
 
   constructor(private http: HttpClient, private global: GlobalService) { }
 
-  createUser(name, ci, address, age, phone, password, role_code) {
-    return this.http.post(this.global.getHost() + '/users', { name, ci, address, age, phone, password, role_code }, { headers: { 'Authorization': this.global.getToken() } });
+  createUser(name, ci, address, age, phone, password, role_code, parent_id) {
+    return this.http.post(this.global.getHost() + '/users', { name, ci, address, age, phone, password, role_code, parent_id }, { headers: { 'Authorization': this.global.getToken() } });
   }
 
   getUsers() {
-    return this.http.get(this.global.getHost() + '/users', { headers: { 'Authorization': this.global.getToken() } })
+    return this.http.get(this.global.getHost() + '/users', { headers: { 'Authorization': this.global.getToken() } });
+  }
+  getParents() {
+    return this.http.get(this.global.getHost() + '/parents', { headers: { 'Authorization': this.global.getToken() } });
   }
 
   deleteUser(id) {

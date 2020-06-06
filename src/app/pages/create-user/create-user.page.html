@@ -33,6 +33,11 @@
         <ion-select-option *ngFor="let item of userTypes" value="{{ item.code }}">{{ item.name }}</ion-select-option>
       </ion-select>
     </ion-item>
+    <ion-item>
+      <ion-select *ngIf="userForm.value.type==1003" formControlName="parentId" placeholder="Seleccione al padre del estudiante">
+        <ion-select-option *ngFor="let item of parents" value="{{ item.id }}">{{ item.ci }}</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-button type="submit" [disabled]="!userForm.valid">Registrar nuevo usuario</ion-button>
   </form>
 

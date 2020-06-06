@@ -23,7 +23,7 @@ export class ChangePasswordPage implements OnInit {
   }
 
   changePassword() {
-    this.usersService.changePassword(this.userForm.value.password, this.userForm.value.new_password).subscribe(data => {
+    this.usersService.changePassword(this.userForm.value.password, this.userForm.value.newPassword).subscribe(data => {
       console.log(data);
       this.message = 'Contraseña cambiada';
     }, error => {

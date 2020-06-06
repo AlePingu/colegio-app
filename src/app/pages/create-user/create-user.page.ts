@@ -13,6 +13,7 @@ export class CreateUserPage implements OnInit {
   private userForm : FormGroup;
   private message : string;
   private userTypes;
+  private parents;
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService, private globalService: GlobalService) {
     this.userForm = this.formBuilder.group({
@@ -22,7 +23,8 @@ export class CreateUserPage implements OnInit {
       age: ['', Validators.required],
       phone: ['', Validators.required],
       password: [''],
-      type: ['', Validators.required]
+      type: ['', Validators.required],
+      parentId: ['']
     });
   }
 
@@ -33,8 +35,6 @@ export class CreateUserPage implements OnInit {
         this.userTypes = [
           {name: 'Director', code: 1001},
           {name: 'Profesor', code: 1002},
-          {name: 'Estudiante', code: 1003},
-          {name: 'Padre', code: 1004}
         ];
       }else if(roles.includes(1002)) {
         this.userTypes = [
@@ -43,11 +43,19 @@ export class CreateUserPage implements OnInit {
         ];
       }
     }
+    this.loadParents()
+  }
+  loadParents() {
+    this.usersService.getParents().subscribe(data => {
+      this.parents = data;
+    }, error => {
+      console.log(error);
+    });
   }
 
   createUser() {
     //do something
-    this.usersService.createUser(this.userForm.value.name, this.userForm.value.ci, this.userForm.value.address, this.userForm.value.age, this.userForm.value.phone, this.userForm.value.password, this.userForm.value.type).subscribe(data => {
+    this.usersService.createUser(this.userForm.value.name, this.userForm.value.ci, this.userForm.value.address, this.userForm.value.age, this.userForm.value.phone, this.userForm.value.password, this.userForm.value.type, this.userForm.value.parentId).subscribe(data => {
       console.log(data);
       this.message = 'Usuario creado exitosamente';
     }, error => {
