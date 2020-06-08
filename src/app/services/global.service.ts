@@ -9,8 +9,8 @@ export class GlobalService {
 
   getHost()
   {
-    // return 'https://vast-journey-44452.herokuapp.com/';
-    return 'http://localhost:3000/'
+    return 'https://vast-journey-44452.herokuapp.com/';
+    // return 'http://localhost:3000/'
   }
 
   getToken() {
