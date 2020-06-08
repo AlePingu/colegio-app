@@ -14,7 +14,7 @@
       <ion-input type="text" formControlName="name" placeholder="Introduzca el nombre de la materia"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-select formControlName="cursoId" placeholder="Seleccione el curso de la materia">
+      <ion-select formControlName="gradeId" placeholder="Seleccione el curso de la materia">
         <ion-select-option *ngFor="let item of grades" value="{{ item.id }}">{{ item.name }}</ion-select-option>
       </ion-select>
     </ion-item>
