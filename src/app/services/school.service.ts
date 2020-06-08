@@ -17,6 +17,9 @@ export class SchoolService {
   createEnrollment(grade_id, student_id) {
     return this.http.post(this.global.getHost() + '/grades/' + grade_id + '/enrollments' , { student_id }, { headers: { 'Authorization': this.global.getToken() } })
   }
+  createSubject(grade_id, name, teacher_id) {
+    return this.http.post(this.global.getHost() + '/grades/' + grade_id + '/subjects' , { name, teacher_id }, { headers: { 'Authorization': this.global.getToken() } })
+  }
 
   getGrades() {
     return this.http.get(this.global.getHost() + '/grades', { headers: { 'Authorization': this.global.getToken() } });

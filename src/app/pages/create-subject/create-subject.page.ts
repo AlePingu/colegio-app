@@ -29,7 +29,13 @@ export class CreateSubjectPage implements OnInit {
   }
 
   createSubject() {
-    this.message = 'materia creada'
+    this.schoolService.createSubject(this.subjectForm.value.gradeId, this.subjectForm.value.name, this.subjectForm.value.teacherId).subscribe(data => {
+      console.log(data);
+      this.message = 'Materia creado exitosamente';
+    }, error => {
+      console.log(error);
+      this.message = 'Error al crear materia'
+    });
   }
 
   loadTeachers() {
