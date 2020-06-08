@@ -20,6 +20,12 @@ export class UsersService {
   getParents() {
     return this.http.get(this.global.getHost() + '/parents', { headers: { 'Authorization': this.global.getToken() } });
   }
+  getTeachers() {
+    return this.http.get(this.global.getHost() + '/teachers', { headers: { 'Authorization': this.global.getToken() } });
+  }
+  getStudents() {
+    return this.http.get(this.global.getHost() + '/students', { headers: { 'Authorization': this.global.getToken() } });
+  }
 
   deleteUser(id) {
     return this.http.delete(this.global.getHost() + '/users/' + id, { headers: { 'Authorization': this.global.getToken() } });

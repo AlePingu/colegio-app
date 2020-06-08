@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { UsersService } from '../../services/users.service';
+import { SchoolService } from '../../services/school.service';
 
 @Component({
   selector: 'app-create-subject',
@@ -8,21 +10,42 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CreateSubjectPage implements OnInit {
 
-  private subject_form : FormGroup;
+  private subjectForm : FormGroup;
+  private teachers;
+  private grades;
   private message : string;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.subject_form = this.formBuilder.group({
-      name: ['']
+  constructor(private formBuilder: FormBuilder, private usersService: UsersService, private schoolService: SchoolService) {
+    this.subjectForm = this.formBuilder.group({
+      name: [''],
+      teacherId: ['',  Validators.required],
+      gradeId: ['',  Validators.required]
     });
   }
 
   ngOnInit() {
+    this.loadTeachers();
+    this.loadGrades();
   }
 
   createSubject() {
-    //do something
     this.message = 'materia creada'
+  }
+
+  loadTeachers() {
+    this.usersService.getTeachers().subscribe(data => {
+      this.teachers = data;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  loadGrades() {
+    this.usersService.getTeachers().subscribe(data => {
+      this.teachers = data;
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

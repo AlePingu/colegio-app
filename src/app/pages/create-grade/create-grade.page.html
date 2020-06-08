@@ -9,14 +9,16 @@
 
 <ion-content>
 
-  <form [formGroup]="grade_form" (ngSubmit)="createGrade()">
+  <form [formGroup]="gradeForm" (ngSubmit)="createGrade()">
     <ion-item>
       <ion-input type="text" formControlName="name" placeholder="Introduzca el nombre del curso"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="number" formControlName="year" placeholder="Introduzca el año escolar"></ion-input>
+      <ion-select formControlName="teacherId" placeholder="Seleccione el profesor encargado">
+        <ion-select-option *ngFor="let item of teachers" value="{{ item.id }}">{{ item.name }}</ion-select-option>
+      </ion-select>
     </ion-item>
-    <ion-button type="submit" [disabled]="!grade_form.valid">Registrar nuevo curso</ion-button>
+    <ion-button type="submit" [disabled]="!gradeForm.valid">Registrar nuevo curso</ion-button>
   </form>
 
   {{ message }}
