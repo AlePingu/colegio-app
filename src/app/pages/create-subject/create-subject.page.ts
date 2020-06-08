@@ -41,8 +41,8 @@ export class CreateSubjectPage implements OnInit {
   }
 
   loadGrades() {
-    this.usersService.getTeachers().subscribe(data => {
-      this.teachers = data;
+    this.schoolService.getGrades().subscribe(data => {
+      this.grades = data;
     }, error => {
       console.log(error);
     });

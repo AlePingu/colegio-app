@@ -18,8 +18,11 @@ export class SchoolService {
     return this.http.post(this.global.getHost() + '/grades/' + grade_id + '/enrollments' , { student_id }, { headers: { 'Authorization': this.global.getToken() } })
   }
 
-  getMyGrades()
-  {
+  getGrades() {
+    return this.http.get(this.global.getHost() + '/grades', { headers: { 'Authorization': this.global.getToken() } });
+  }
+
+  getMyGrades() {
     return this.http.get(this.global.getHost() + '/grades/my', { headers: { 'Authorization': this.global.getToken() } });
   }
 }
