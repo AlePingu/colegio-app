@@ -30,6 +30,7 @@ export class CreateEnrollmentPage implements OnInit {
   loadGrades() {
     this.schoolService.getMyGrades().subscribe(data => {
       this.grades = data;
+      console.log(data);
     }, error => {
       console.log(error);
     });
@@ -37,6 +38,7 @@ export class CreateEnrollmentPage implements OnInit {
   loadStudents() {
     this.usersService.getStudents().subscribe(data => {
       this.students = data;
+      console.log(data);
     }, error => {
       console.log(error);
     });

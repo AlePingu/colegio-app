@@ -9,18 +9,18 @@
 
 <ion-content>
 
-  <form [formGroup]="gradeForm" (ngSubmit)="createGrade()">
+  <form [formGroup]="enrollmentForm" (ngSubmit)="createGrade()">
     <ion-item>
       <ion-select formControlName="gradeId" placeholder="Seleccione el curso">
-        <ion-select-option *ngFor="let item of grades" value="{{ item.id }}">{{ item.name }}</ion-select-option>
+        <ion-select-option *ngFor="let grade of grades" value="{{ grade.id }}">{{ grade.name }}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-select formControlName="studentId" placeholder="Seleccione al estudiante">
-        <ion-select-option *ngFor="let item of teachers" value="{{ item.id }}">{{ item.ci }} {{ item.name }}</ion-select-option>
+        <ion-select-option *ngFor="let s of students" value="{{ s.id }}">{{ s.ci }}: {{ s.name }}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-button type="submit" [disabled]="!gradeForm.valid">Inscribir</ion-button>
+    <ion-button type="submit" [disabled]="!enrollmentForm.valid">Inscribir</ion-button>
   </form>
 
   {{ message }}
