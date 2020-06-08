@@ -75,8 +75,8 @@ export class AppComponent implements OnInit {
         }
         if(roles.includes(1002)) {
           this.appPages.push({
-            title: 'Registrar estudiante en un curso',
-            url: '/register',
+            title: 'Inscribir estudiante',
+            url: '/create-enrollment',
             icon: 'warning'
           });
         }

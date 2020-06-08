@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'change-password',
     loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+  },
+  {
+    path: 'create-enrollment',
+    loadChildren: () => import('./pages/create-enrollment/create-enrollment.module').then( m => m.CreateEnrollmentPageModule)
   }
 ];
 
