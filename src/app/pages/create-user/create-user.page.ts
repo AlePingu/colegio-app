@@ -58,6 +58,7 @@ export class CreateUserPage implements OnInit {
     this.usersService.createUser(this.userForm.value.name, this.userForm.value.ci, this.userForm.value.address, this.userForm.value.age, this.userForm.value.phone, this.userForm.value.password, this.userForm.value.type, this.userForm.value.parentId).subscribe(data => {
       console.log(data);
       this.message = 'Usuario creado exitosamente';
+      this.loadParents();
     }, error => {
       console.log(error);
       this.message = 'Error al crear usuario'
