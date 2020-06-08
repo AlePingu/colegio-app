@@ -46,7 +46,7 @@ export class CreateEnrollmentPage implements OnInit {
 
   createGrade() {
     //do something
-    this.schoolService.createEnrollment(this.enrollmentForm.value.gradeId, this.enrollmentForm.value.enrollmentId).subscribe(data => {
+    this.schoolService.createEnrollment(this.enrollmentForm.value.gradeId, this.enrollmentForm.value.studentId).subscribe(data => {
       console.log(data);
       this.message = 'Curso creado exitosamente';
     }, error => {
